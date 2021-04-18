@@ -31,14 +31,19 @@ def index():
     print(jobs)
     res = []
     for job in jobs:
+        if current_user.is_authenticated:
+            editable = job.team_leader == current_user.id or current_user.id == 1
+        else:
+            editable = False
         res.append({
             'description': job.description,
             'collaborators': job.collaborators,
             'duration': job.work_size,
             'team_leader': db_sess.query(User).filter(User.id == job.team_leader).first().name,
-            'is_finished': 'is finished' if job.is_finished else 'is not finished'
+            'is_finished': 'is finished' if job.is_finished else 'is not finished',
+            'editable': editable
         })
-    return render_template("index.html", jobs=res)
+    return render_template("index.html", jobs=res, authorized=current_user.is_authenticated)
 
 
 @app.route('/register', methods=['GET', 'POST'])

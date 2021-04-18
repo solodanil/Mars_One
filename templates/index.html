@@ -23,7 +23,12 @@
       <td>{{job['is_finished']}}</td>
   </tbody>
 </table>
+{% if job['editable'] %}
 <a href="/edit_job/{{loop.index}}" class="btn">Edit job</a>
-<a href="/delete_job/{{loop.index}}" class="btn"">Delete job</a>
+<a href="/delete_job/{{loop.index}}" class="btn">Delete job</a>
+{% endif %}
 {% endfor %}
+{% if authorized %}
+<a href="/addjob" class="btn">New job</a>
+{% endif %}
 {% endblock %}
