@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if "инжен" in prof or "строит" in proof %}
+<h2>Инженерные тренажеры</h2>
+<img src="/static/img/engeneer.jpg">
+ {% else %}
+<h2>Научные симуляторы</h2>
+<img src="/static/img/science.jpg">
+ {% endif %}
+{% endblock %}

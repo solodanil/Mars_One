@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Works log </h1>
+{% for job in jobs%}
+    <h2>Action #{{loop.index}}</h2>
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Title of activity</th>
+      <th scope="col">Team leader</th>
+      <th scope="col">Duration</th>
+      <th scope="col">List of collaborators</th>
+      <th scope="col">Is finished</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{job['description']}}</td>
+      <td>{{job['team_leader']}}</td>
+      <td>{{job['duration']}} hours</td>
+      <td>{{job['collaborators']}}</td>
+      <td>{{job['is_finished']}}</td>
+  </tbody>
+</table>
+{% endfor %}
+{% endblock %}
