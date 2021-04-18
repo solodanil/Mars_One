@@ -23,5 +23,7 @@
       <td>{{job['is_finished']}}</td>
   </tbody>
 </table>
+<a href="/edit_job/{{loop.index}}" class="btn">Edit job</a>
+<a href="/delete_job/{{loop.index}}" class="btn"">Delete job</a>
 {% endfor %}
 {% endblock %}
